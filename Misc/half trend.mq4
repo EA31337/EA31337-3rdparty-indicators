@@ -117,8 +117,8 @@ int start()
      {
       lowprice_i=iLow(Symbol(),Period(),iLowest(Symbol(),Period(),MODE_LOW,Amplitude,i));
       highprice_i=iHigh(Symbol(),Period(),iHighest(Symbol(),Period(),MODE_HIGH,Amplitude,i));
-      lowma=NormalizeDouble(iMA(NULL,0,Amplitude,0,MODE_SMA,PRICE_LOW,i),Digits());
-      highma=NormalizeDouble(iMA(NULL,0,Amplitude,0,MODE_SMA,PRICE_HIGH,i),Digits());
+      lowma=NormalizeDouble(iMA(NULL,0,Amplitude,0,MODE_SMA,PRICE_LOW,i),_Digits);
+      highma=NormalizeDouble(iMA(NULL,0,Amplitude,0,MODE_SMA,PRICE_HIGH,i),_Digits);
       trend[i]=trend[i+1];
       atr=iATR(Symbol(),0,100,i)/2;
 
@@ -196,8 +196,9 @@ void manageAlerts()
 {
    if (alertsOn)
    {
+      int whichBar;
       if (alertsOnCurrent)
-           int whichBar = 0;
+               whichBar = 0;
       else     whichBar = 1; 
          if (arrup[whichBar]  != EMPTY_VALUE) doAlert(whichBar,"up");
          if (arrdwn[whichBar] != EMPTY_VALUE) doAlert(whichBar,"down");
@@ -214,7 +215,7 @@ void doAlert(int forBar, string doWhat)
 {
    static string   previousAlert="nothing";
    static datetime previousTime;
-   string message;
+   // string message;
    
    if (previousAlert != doWhat || previousTime != Time[forBar]) {
        previousAlert  = doWhat;
@@ -226,10 +227,12 @@ void doAlert(int forBar, string doWhat)
        //
        //
 
+/* @fixme
        message =  StringConcatenate(Symbol()," at ",TimeToStr(TimeLocal(),TIME_SECONDS)," HalfTrend signal ",doWhat);
           if (alertsMessage) Alert(message);
           if (alertsEmail)   SendMail(StringConcatenate(Symbol(),"HalfTrend "),message);
           if (alertsSound)   PlaySound("alert2.wav");
+*/
    }
 }
 
