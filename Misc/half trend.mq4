@@ -1,10 +1,10 @@
 //Available @ https://fxcodebase.com/code/viewtopic.php?f=38&t=73852
 
 //+------------------------------------------------------------------------------------------------+
-//|                                                            Copyright © 2023, Gehtsoft USA LLC  | 
+//|                                                            Copyright © 2023, Gehtsoft USA LLC  |
 //|                                                                         http://fxcodebase.com  |
 //+------------------------------------------------------------------------------------------------+
-//|                                                                   Developed by : Mario Jemic   |                    
+//|                                                                   Developed by : Mario Jemic   |
 //|                                                                       mario.jemic@gmail.com    |
 //|                                                        https://AppliedMachineLearning.systems  |
 //|                                                                       https://mario-jemic.com/ |
@@ -14,7 +14,7 @@
 //|                                           Our work would not be possible without your support. |
 //+------------------------------------------------------------------------------------------------+
 //|                                                               Paypal: https://goo.gl/9Rj74e    |
-//|                                                             Patreon :  https://goo.gl/GdXWeN   |  
+//|                                                             Patreon :  https://goo.gl/GdXWeN   |
 //+------------------------------------------------------------------------------------------------+
 
 
@@ -56,7 +56,7 @@ double arrup[],arrdwn[];
 int init()
   {
    IndicatorBuffers(7); // +1 buffer - trend[]
-   
+
    SetIndexBuffer(0,up);
    SetIndexStyle(0,DRAW_LINE);
    SetIndexBuffer(1,down);
@@ -69,7 +69,7 @@ int init()
    SetIndexEmptyValue(0,0.0);
    SetIndexEmptyValue(1,0.0);
    SetIndexEmptyValue(6,0.0);
-   
+
    if(ShowBars)
    {
       SetIndexStyle(2,DRAW_HISTOGRAM, STYLE_SOLID);
@@ -89,9 +89,9 @@ int init()
    {
      SetIndexStyle(4,DRAW_NONE);
      SetIndexStyle(5,DRAW_NONE);
-   } 
-          
-     
+   }
+
+
    nexttrend=0;
    minhighprice= High[Bars-1];
    maxlowprice = Low[Bars-1];
@@ -112,7 +112,7 @@ int start()
       if(counted_bars<0) return(-1);
       if(counted_bars>0) counted_bars--;
          int limit = MathMin(Bars-counted_bars,Bars-1);
-   
+
    for(int i=Bars-1; i>=0; i--)
      {
       lowprice_i=iLow(Symbol(),Period(),iLowest(Symbol(),Period(),MODE_LOW,Amplitude,i));
@@ -168,7 +168,7 @@ int start()
            {
             down[i]=up[i+1];
             down[i+1]=down[i];
-            arrdwn[i] = down[i] + 2*atr;           
+            arrdwn[i] = down[i] + 2*atr;
            }
          else
            {
@@ -184,7 +184,7 @@ int start()
   }
 //+------------------------------------------------------------------+
 //+-------------------------------------------------------------------
-//|                                                                  
+//|
 //+-------------------------------------------------------------------
 //
 //
@@ -199,7 +199,7 @@ void manageAlerts()
       int whichBar;
       if (alertsOnCurrent)
                whichBar = 0;
-      else     whichBar = 1; 
+      else     whichBar = 1;
          if (arrup[whichBar]  != EMPTY_VALUE) doAlert(whichBar,"up");
          if (arrdwn[whichBar] != EMPTY_VALUE) doAlert(whichBar,"down");
    }
@@ -216,7 +216,7 @@ void doAlert(int forBar, string doWhat)
    static string   previousAlert="nothing";
    static datetime previousTime;
    // string message;
-   
+
    if (previousAlert != doWhat || previousTime != Time[forBar]) {
        previousAlert  = doWhat;
        previousTime   = Time[forBar];
@@ -237,25 +237,25 @@ void doAlert(int forBar, string doWhat)
 }
 
 //+------------------------------------------------------------------------------------------------+
-//|                                                                    We appreciate your support. | 
+//|                                                                    We appreciate your support. |
 //+------------------------------------------------------------------------------------------------+
 //|                                                               Paypal: https://goo.gl/9Rj74e    |
-//|                                                             Patreon :  https://goo.gl/GdXWeN   |  
+//|                                                             Patreon :  https://goo.gl/GdXWeN   |
 //+------------------------------------------------------------------------------------------------+
-//|                                                                   Developed by : Mario Jemic   |                    
+//|                                                                   Developed by : Mario Jemic   |
 //|                                                                       mario.jemic@gmail.com    |
 //|                                                        https://AppliedMachineLearning.systems  |
 //|                                                                       https://mario-jemic.com/ |
 //+------------------------------------------------------------------------------------------------+
 
 //+------------------------------------------------------------------------------------------------+
-//|BitCoin                    : 15VCJTLaz12Amr7adHSBtL9v8XomURo9RF                                 |  
-//|Ethereum                   : 0x8C110cD61538fb6d7A2B47858F0c0AaBd663068D                         |  
+//|BitCoin                    : 15VCJTLaz12Amr7adHSBtL9v8XomURo9RF                                 |
+//|Ethereum                   : 0x8C110cD61538fb6d7A2B47858F0c0AaBd663068D                         |
 //|SOL Address                : 4tJXw7JfwF3KUPSzrTm1CoVq6Xu4hYd1vLk3VF2mjMYh                       |
-//|Cardano/ADA                : addr1v868jza77crzdc87khzpppecmhmrg224qyumud6utqf6f4s99fvqv         |  
+//|Cardano/ADA                : addr1v868jza77crzdc87khzpppecmhmrg224qyumud6utqf6f4s99fvqv         |
 //|Dogecoin Address           : DBGXP1Nc18ZusSRNsj49oMEYFQgAvgBVA8                                 |
-//|SHIB Address               : 0x1817D9ebb000025609Bf5D61E269C64DC84DA735                         |              
-//|Binance(ERC20 & BSC only)  : 0xe84751063de8ade7c5fbff5e73f6502f02af4e2c                         | 
-//|BitCoin Cash               : 1BEtS465S3Su438Kc58h2sqvVvHK9Mijtg                                 | 
-//|LiteCoin                   : LLU8PSY2vsq7B9kRELLZQcKf5nJQrdeqwD                                 |  
+//|SHIB Address               : 0x1817D9ebb000025609Bf5D61E269C64DC84DA735                         |
+//|Binance(ERC20 & BSC only)  : 0xe84751063de8ade7c5fbff5e73f6502f02af4e2c                         |
+//|BitCoin Cash               : 1BEtS465S3Su438Kc58h2sqvVvHK9Mijtg                                 |
+//|LiteCoin                   : LLU8PSY2vsq7B9kRELLZQcKf5nJQrdeqwD                                 |
 //+------------------------------------------------------------------------------------------------+
